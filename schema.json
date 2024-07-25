@@ -1,0 +1,81 @@
+{
+  "Intermediary": {
+    "Description": "The intermediary or agent handling the insurance proposal.",
+    "Attributes": {
+      "Id": "Unique identifier for the intermediary.",
+      "Name": "Name of the intermediary.",
+      "BranchName": "Name of the branch office."
+    }
+  },
+  "Proposal": {
+    "Description": "Information regarding the insurance proposal.",
+    "Attributes": {
+      "DealNumber": "Unique deal number associated with the proposal.",
+      "ProposalNumber": "Unique proposal number.",
+      "PreviousPolicyNumber": "Number of any previous policy linked to the proposal."
+    }
+  },
+  "Proposer": {
+    "Description": "The individual proposing the insurance.",
+    "Attributes": {
+      "Name": "Name of the proposer.",
+      "DateOfBirth": "DOB of the proposer.",
+      "Gender": "Gender of the proposer.",
+      "PANNumber": "Permanent Account Number.",
+      "PoliticallyExposedPerson": "Indicates if the proposer is a politically exposed person."
+    }
+  },
+  "Address": {
+    "Description": "Address details of the proposer.",
+    "Attributes": {
+      "CorrespondenceAddress": "Temporary address for correspondence purposes.",
+      "PermanentAddress": "Permanent residential address."
+    }
+  },
+  "ContactInfo": {
+    "Description": "Contact details of the proposer.",
+    "Attributes": {
+      "MobileNumber": "Mobile phone number.",
+      "Email": "Email address.",
+      "LandlineNumber": "Landline phone number."
+    }
+  },
+  "InsuredPersons": {
+    "Description": "Details of the persons to be insured under the proposal.",
+    "Attributes": {
+      "Name": "Full name of the insured person.",
+      "Gender": "Gender of the insured person.",
+      "DateOfBirth": "DOB of the insured person.",
+      "RelationshipWithProposer": "The relationship of the insured person with the proposer.",
+      "Occupation": "Occupation of the insured person.",
+      "Height": "Height of the insured person.",
+      "Weight": "Weight of the insured person."
+    }
+  },
+  "InsuranceDetails": {
+    "Description": "Specific details about the insurance policy being proposed.",
+    "Attributes": {
+      "Product": "The specific insurance product.",
+      "SumInsured": "Total amount insured under the policy.",
+      "PlanName": "Name of the insurance plan.",
+      "ZoneOpted": "Geographical zone covered by the plan.",
+      "Premium": "Cost of the insurance premium."
+    }
+  },
+  "Nominee": {
+    "Description": "Details about the nominee for the insurance.",
+    "Attributes": {
+      "Name": "Name of the nominee.",
+      "DateOfBirth": "DOB of the nominee.",
+      "RelationshipWithProposer": "The relationship of the nominee with the proposer."
+    }
+  },
+  "PaymentDetails": {
+    "Description": "Payment information for the insurance premium.",
+    "Attributes": {
+      "PaymentOption": "Mode of payment used.",
+      "Amount": "Total amount paid.",
+      "BankName": "Name of the bank through which payment was made."
+    }
+  }
+}
