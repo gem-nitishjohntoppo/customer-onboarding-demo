@@ -1,2 +1,4 @@
 .env
 tempDir
+myenv
+_pycache_
