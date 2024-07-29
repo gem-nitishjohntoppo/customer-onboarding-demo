@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def groq_llm(input_prompt, model='llama3-8b-8192'):
+def groq_llm(input_prompt, model='llama-3.1-405b'):
     api_key = os.getenv("GROQ_API")
     client = Groq(api_key=api_key)
     messages = [

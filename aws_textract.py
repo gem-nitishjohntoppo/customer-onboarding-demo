@@ -90,7 +90,7 @@ def analyze(document_path: str, features: Optional[List[TextractFeatures]] = Non
 
 # Function to extract text from a file using AWS Textract
 # @st.cache_data
-def extract_text(file_path, document_bytes: Optional[bytes] = None, with_layout=False):
+def extract_text(file_path, document_bytes: Optional[bytes] = None, with_layout=True):
     max_retries = 3
 
     for retry_count in range(max_retries):
@@ -111,7 +111,12 @@ def extract_text(file_path, document_bytes: Optional[bytes] = None, with_layout=
 
         
         page_results = []
-        for i, page in enumerate(document.pages):
+        
+        # for i, page in enumerate(document.pages):
+        # Limit extraction to the first 5 pages or the total number of pages if less than 5
+        num_pages_to_process = min(7, len(document.pages))
+        for i in range(num_pages_to_process):
+            page = document.pages[i]
             page_text = page.get_text(config=config)
             page_results.append({
                 "page": i + 1,

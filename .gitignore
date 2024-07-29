@@ -1,4 +1,4 @@
 .env
-tempDir
-myenv
-_pycache_
+tempDir/
+myenv/
+__pycache__/

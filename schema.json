@@ -1,81 +1,95 @@
 {
-  "Intermediary": {
-    "Description": "The intermediary or agent handling the insurance proposal.",
+  "ProposerDetails": {
+    "Description": "Details of the individual proposing the insurance.",
     "Attributes": {
-      "Id": "Unique identifier for the intermediary.",
-      "Name": "Name of the intermediary.",
-      "BranchName": "Name of the branch office."
-    }
-  },
-  "Proposal": {
-    "Description": "Information regarding the insurance proposal.",
-    "Attributes": {
-      "DealNumber": "Unique deal number associated with the proposal.",
-      "ProposalNumber": "Unique proposal number.",
-      "PreviousPolicyNumber": "Number of any previous policy linked to the proposal."
-    }
-  },
-  "Proposer": {
-    "Description": "The individual proposing the insurance.",
-    "Attributes": {
-      "Name": "Name of the proposer.",
-      "DateOfBirth": "DOB of the proposer.",
+      "Name": "Full name of the proposer.",
+      "MaritalStatus": "Marital status of the proposer.",
       "Gender": "Gender of the proposer.",
-      "PANNumber": "Permanent Account Number.",
-      "PoliticallyExposedPerson": "Indicates if the proposer is a politically exposed person."
+      "DateOfBirth": "Date of birth of the proposer.",
+      "Occupation": "Occupation of the proposer.",
+      "Mobile": "Mobile number of the proposer.",
+      "PANCard": "PAN card number of the proposer.",
+      "Email": "Email address of the proposer.",
+      "MonthlyIncome": "Monthly income of the proposer.",
+      "Address": {
+        "Landmark": "Landmark near the proposer's address.",
+        "Area": "Area of the proposer's residence.",
+        "City": "City of the proposer's residence.",
+        "District": "District of the proposer's residence.",
+        "PinCode": "Postal code of the proposer's residence.",
+        "State": "State of the proposer's residence."
+      }
     }
   },
-  "Address": {
-    "Description": "Address details of the proposer.",
+  "PlanDetails": {
+    "Description": "Insurance plan details chosen by the proposer.",
     "Attributes": {
-      "CorrespondenceAddress": "Temporary address for correspondence purposes.",
-      "PermanentAddress": "Permanent residential address."
-    }
-  },
-  "ContactInfo": {
-    "Description": "Contact details of the proposer.",
-    "Attributes": {
-      "MobileNumber": "Mobile phone number.",
-      "Email": "Email address.",
-      "LandlineNumber": "Landline phone number."
+      "PlanType": "Type of the insurance plan (Individual or Floater).",
+      "SumInsured": "Amount of money insured.",
+      "PremiumPaymentMode": "Mode of premium payment (Yearly, Half-yearly, Quarterly, Monthly)."
     }
   },
   "InsuredPersons": {
-    "Description": "Details of the persons to be insured under the proposal.",
+    "Description": "Details of persons to be insured under the plan.",
     "Attributes": {
-      "Name": "Full name of the insured person.",
+      "Name": "Name of the insured person.",
       "Gender": "Gender of the insured person.",
-      "DateOfBirth": "DOB of the insured person.",
-      "RelationshipWithProposer": "The relationship of the insured person with the proposer.",
-      "Occupation": "Occupation of the insured person.",
-      "Height": "Height of the insured person.",
-      "Weight": "Weight of the insured person."
+      "RelationshipWithProposer": "Relationship of the insured person with the proposer.",
+      "DateOfBirth": "Date of birth of the insured person.",
+      "Height": "Height of the insured person in centimeters.",
+      "Weight": "Weight of the insured person in kilograms.",
+      "SumInsured": "Amount insured for the individual under the floater plan."
     }
   },
-  "InsuranceDetails": {
-    "Description": "Specific details about the insurance policy being proposed.",
-    "Attributes": {
-      "Product": "The specific insurance product.",
-      "SumInsured": "Total amount insured under the policy.",
-      "PlanName": "Name of the insurance plan.",
-      "ZoneOpted": "Geographical zone covered by the plan.",
-      "Premium": "Cost of the insurance premium."
-    }
-  },
-  "Nominee": {
-    "Description": "Details about the nominee for the insurance.",
+  "NomineeDetails": {
+    "Description": "The nominee is the legal recipient of the insurance proceeds after the policyholder's demise, ensuring that the benefits are transferred smoothly and quickly.",
     "Attributes": {
       "Name": "Name of the nominee.",
-      "DateOfBirth": "DOB of the nominee.",
-      "RelationshipWithProposer": "The relationship of the nominee with the proposer."
+      "DateOfBirth": "Date of birth of the nominee.",
+      "Relationship": "Relationship of the nominee with the proposer."
+    }
+  },
+  "ExistingInsurerDetails": {
+    "Description": "Details of any existing or previous health insurance.",
+    "Attributes": {
+      "CurrentlyInsured": "Whether the proposer or insured persons are currently insured elsewhere.",
+      "PolicyNumbers": "List of policy numbers if currently or previously insured.",
+      "Insurer": "Name of the insurer for previous policies.",
+      "PeriodOfInsurance": "Insurance period for previous policies.",
+      "SumInsuredAndBonus": "Sum insured and any cumulative bonus on previous policies.",
+      "ClaimsDetails": "Details of any claims made under previous policies."
+    }
+  },
+  "MedicalAndLifestyleDetails": {
+    "Description": "Medical history and lifestyle details of the persons to be insured.",
+    "Attributes": {
+      "MedicalHistory": "Medical conditions and treatments undergone by the insured persons.",
+      "Lifestyle": {
+        "Smoking": "Details about smoking habits.",
+        "Alcohol": "Details about alcohol consumption.",
+        "OtherSubstances": "Details about other substance uses."
+      }
     }
   },
   "PaymentDetails": {
-    "Description": "Payment information for the insurance premium.",
+    "Description": "Details of the payment for the insurance proposal.",
     "Attributes": {
-      "PaymentOption": "Mode of payment used.",
-      "Amount": "Total amount paid.",
-      "BankName": "Name of the bank through which payment was made."
+      "PremiumPayerName": "Name of the person paying the premium.",
+      "RelationshipWithProposer": "Relationship of the premium payer with the proposer.",
+      "PremiumAmount": "Amount of the premium paid.",
+      "InstrumentType": "Type of payment instrument used.",
+      "SourceOfFunds": "Source of the funds used for the payment."
+    }
+  },
+  "BankDetails": {
+    "Description": "Bank details for refunds or claims.",
+    "Attributes": {
+      "AccountHolderName": "Name of the account holder.",
+      "BankName": "Name of the bank.",
+      "Branch": "Branch of the bank.",
+      "AccountNumber": "Bank account number.",
+      "IFSCCode": "IFSC code of the bank branch.",
+      "AccountType": "Type of bank account (Savings, Current, etc.)."
     }
   }
 }

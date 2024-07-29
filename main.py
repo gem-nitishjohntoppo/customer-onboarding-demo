@@ -8,5 +8,6 @@ if __name__ == "__main__":
         schema = json.load(file)
     
     context = extract_text('Proposal_Form.pdf', with_layout=True)
+    # print(f'Here:{context}')
     final_json = process_large_context_in_chunks(context, schema)
     print(f'ANSWER: {final_json}')
