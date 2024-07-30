@@ -5,11 +5,19 @@ from text_processing import process_large_context_in_chunks
 import json
 
 # Initialize the Streamlit app
-st.title('PDF to JSON Processor')
+st.title('PortMyHealth_Insurance')
 
 # File uploader allows the user to upload PDF
 uploaded_file = st.file_uploader("Choose a PDF file", type='pdf')
 
+# Model selection dropdown
+models = {
+    "Llama 3b 70B": "meta.llama3-70b-instruct-v1:0",
+    "Llama 3b 8B": "meta.llama3-8b-instruct-v1:0"
+    
+}
+selected_model = st.selectbox("Select LLM Model", options=list(models.keys()))
+print(selected_model)
 if uploaded_file is not None:
     # Create the temp directory if it doesn't exist
     temp_dir = "tempDir"
@@ -32,7 +40,8 @@ if uploaded_file is not None:
     
     # Process the extracted text
     try:
-        final_json = process_large_context_in_chunks(context, schema)
+        model_id = models[selected_model]
+        final_json = process_large_context_in_chunks(context, schema, model_id)
         st.json(final_json)  # Display JSON output in a pretty format
     except Exception as e:
         st.error(f"Error processing document: {e}")

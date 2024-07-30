@@ -8,9 +8,10 @@ import botocore.exceptions
 from groq_api_utils import extract_json_from_string
 
 load_dotenv()
+system_prompt ="Your Task is to correct the given json in the json format provided and return the corrected Json.If some information did not fit into any of the existing categories just return Not Available or NA for the attributes that don't fits"
 bedrock = boto3.client(service_name="bedrock-runtime", region_name="ap-south-1")
-def bedrock_llm(prompt ,model = "meta.llama3-70b-instruct-v1:0", temperature = 0, sys_prompt = "Your Task is to correct the given json in the json format provided and return the corrected Json.If some information did not fit into any of the existing categories return null values for the attributes that don't fits"):
- 
+def bedrock_llm(prompt ,model, temperature = 0, sys_prompt = system_prompt):
+    print(f'model name{model}')
     # Define Prompt Template
     prompt = f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
  

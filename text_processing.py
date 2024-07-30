@@ -39,13 +39,13 @@ from nltk.tokenize import word_tokenize
 # def merge_results(results):
 #     return {"combined_result": results}
 
-def process_large_context_in_chunks(contexts, schema):
+def process_large_context_in_chunks(contexts, schema, model_id):
     chunks = [split_into_chunks(entry['context']) for entry in contexts]
     results = []
     for page_chunks in chunks:
         for chunk in page_chunks:
             prompt = generate_prompt(chunk, schema)
-            result = bedrock_llm(prompt, model="meta.llama3-70b-instruct-v1:0")
+            result = bedrock_llm(prompt, model=model_id)
             # result = groq_llm(prompt, model="llama-3.1-405b")
             print(f'Bedrock results: {result}')
             print(f'Bedrock results Type: {type(result)}')
