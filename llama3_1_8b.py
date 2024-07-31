@@ -4,15 +4,11 @@ import json
 import re
 import time
 from dotenv import load_dotenv
-import botocore.exceptions
-from groq_api_utils import extract_json_from_string
 
-load_dotenv()
+bedrock = boto3.client(service_name="bedrock-runtime", region_name="us-west-2")
 system_prompt ="Your Task is to correct the given json in the json format provided and return the corrected Json. If any information does not fit the existing categories, return null for those attributes don't create new categories. Ensure no additional notes are included in the end output."
-#system_prompt ="Your Task is to correct the given json in the json format provided and return the corrected Json.If some information did not fit into any of the existing categories just return null value for the attributes that don't fits"
-bedrock = boto3.client(service_name="bedrock-runtime", region_name="ap-south-1")
-def llama3_70b(prompt ,model, temperature = 0, sys_prompt = system_prompt):
-    print(f'model name:{model}')
+def llama3_1_8b(prompt ,model, temperature = 0, sys_prompt = system_prompt):
+    print(f'model name{model}')
     # Define Prompt Template
     prompt = f"""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
  
