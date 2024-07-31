@@ -49,17 +49,18 @@
       "Relationship": "Relationship of the nominee with the proposer."
     }
   },
-  "ExistingInsurerDetails": {
-    "Description": "Details of any existing or previous health insurance.",
-    "Attributes": {
-      "CurrentlyInsured": "Whether the proposer or insured persons are currently insured elsewhere.",
-      "PolicyNumbers": "List of policy numbers if currently or previously insured.",
-      "Insurer": "Name of the insurer for previous policies.",
-      "PeriodOfInsurance": "Insurance period for previous policies.",
-      "SumInsuredAndBonus": "Sum insured and any cumulative bonus on previous policies.",
-      "ClaimsDetails": "Details of any claims made under previous policies."
-    }
-  },
+ "ExistingInsurerDetails": {
+  "Description": "Comprehensive details of any existing or previous health insurance policies held by the proposer or insured persons. This section should capture essential policy details, including insurer names, policy numbers, coverage periods, sum insured, and any claims history to ensure continuity and understanding of past insurance coverage.",
+  "Attributes": {
+    "CurrentlyInsured": "Indicates whether the proposer or any insured person currently has an active insurance policy with another insurer. This should be clearly marked as 'Yes' or 'No'.",
+    "PolicyNumbers": "A list of all policy numbers associated with current and previous insurance coverages. Each policy number should be accurately captured regardless of the number of policies.",
+    "Insurer": "Name of the insurance company for each listed policy. It is crucial to correctly identify the insurer to assess any overlaps or gaps in coverage.",
+    "PeriodOfInsurance": "The active coverage period for each policy mentioned, formatted as 'Start Date - End Date'. Multiple periods should be listed if applicable to document the insurance history comprehensively.",
+    "SumInsuredAndBonus": "Details of the total sum insured under each policy along with any cumulative bonuses accrued. This helps in assessing the financial coverage extent and bonus eligibility.",
+    "ClaimsDetails": "Record of any claims filed under each policy. This should include the name of the insured person making the claim and a brief description of the claim, if available. Ensuring accurate and complete claims history helps in risk assessment and policy decisions."
+  }
+}
+,
   "MedicalAndLifestyleDetails": {
     "Description": "Medical history and lifestyle details of the persons to be insured.",
     "Attributes": {

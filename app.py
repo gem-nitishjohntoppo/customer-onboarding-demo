@@ -42,7 +42,8 @@ if uploaded_file is not None:
     try:
         model_id = models[selected_model]
         final_json = process_large_context_in_chunks(context, schema, model_id)
-        st.json(final_json)  # Display JSON output in a pretty format
+        print(f'final json :{final_json}')
+        st.json(final_json)  # Display JSON output
     except Exception as e:
         st.error(f"Error processing document: {e}")
 else:
