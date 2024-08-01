@@ -1,91 +1,91 @@
 {
-  "ProposerDetails": {
+  "Proposer_Details": {
     "Description": "Details of the individual proposing the insurance.",
     "Attributes": {
       "Name": "The full legal name of the individual proposing the insurance policy.",
-      "MaritalStatus": "The current marital status of the proposer (e.g., Single, Married, Divorced).",
+      "Marital_Status": "The current marital status of the proposer (e.g., Single, Married, Divorced).",
       "Gender": "The gender identity of the proposer (e.g., Male, Female, Non-Binary).",
-      "DateOfBirth": "The birthdate of the proposer, typically in YYYY-MM-DD format.",
+      "Date_Of_Birth": "The birthdate of the proposer, typically in YYYY-MM-DD format.",
       "Occupation": "The primary profession or job title of the proposer.",
-      "Mobile": "A contact mobile number for the proposer.",
-      "PANCard": "The Permanent Account Number (PAN) card number of the proposer, used for tax purposes in India.",
+      "Mobile": "A contact mobile number for the proposer.Should contain atleast 10 digits",
+      "PAN_Card": "The Permanent Account Number (PAN) card number of the proposer, used for tax purposes in India.",
       "Email": "The email address of the proposer.",
-      "MonthlyIncome": "The average monthly income of the proposer.",
+      "Monthly_Income": "The average monthly income of the proposer.",
       "Address": {
         "Landmark": "A notable location near the proposer’s residence to aid in locating it.",
         "Area": "The specific area or neighborhood of the proposer's residence.",
         "City": "The city in which the proposer resides.",
         "District": "The district or administrative division of the city where the proposer lives.",
-        "PinCode": "The postal code of the proposer's residence.",
+        "Pin_Code": "The postal code of the proposer's residence.",
         "State": "The state in which the proposer's residence is located."
       }
     }
   },
-  "PlanDetails": {
+  "Plan_Details": {
     "Description": "Insurance plan details chosen by the proposer.",
     "Attributes": {
-      "PlanType": "Specifies whether the insurance plan is individual or a family floater.",
-      "SumInsured": "The total amount of money insured under the plan.",
-      "PremiumPaymentMode": "The frequency of premium payments (e.g., Yearly, Half-yearly, Quarterly, Monthly)."
+      "Plan_Type": "Specifies whether the insurance plan is individual or a family floater.",
+      "Sum_Insured": "The total amount of money insured under the plan.",
+      "Premium_Payment_Mode": "The frequency of premium payments (e.g., Yearly, Half-yearly, Quarterly, Monthly)."
     }
   },
-  "InsuredPersons": {
+  "Insured_Persons": {
     "Description": "Details of persons to be insured under the plan.",
     "Attributes": {
       "Name": "Name of the person covered under the insurance plan.",
       "Gender": "Gender of the insured person.",
-      "RelationshipWithProposer": "Specifies how the insured person is related to the proposer (e.g., Spouse, Child, Parent).",
-      "DateOfBirth": "Birthdate of the insured person in YYYY-MM-DD format.",
+      "Relationship_With_Proposer": "Specifies how the insured person is related to the proposer (e.g., Spouse, Child, Parent).",
+      "Date_Of_Birth": "Birthdate of the insured person in YYYY-MM-DD format.",
       "Height": "The height of the insured person in centimeters.",
       "Weight": "The weight of the insured person in kilograms.",
-      "SumInsured": "The specific sum insured for this individual under a floater plan."
+      "Sum_Insured": "The specific sum insured for this individual under a floater plan."
     }
   },
-  "NomineeDetails": {
+  "Nominee_Details": {
     "Description": "The nominee is the legal recipient of the insurance proceeds after the policyholder's demise, ensuring that the benefits are transferred smoothly and quickly.",
     "Attributes": {
       "Name": "Name of the person nominated to receive the insurance benefits.",
-      "DateOfBirth": "Birthdate of the nominee.",
+      "Date_Of_Birth": "Birthdate of the nominee.",
       "Relationship": "The relationship of the nominee to the proposer."
     }
   },
-  "ExistingInsurerDetails": {
+  "Existing_Insurer_Details": {
     "Description": "Comprehensive details of any existing or previous health insurance policies held by the proposer or insured persons.",
     "Attributes": {
-      "CurrentlyInsured": "Indicates whether there is an active policy with another insurer.",
-      "PolicyNumbers": "A list of all policy numbers associated with current or previous coverages.",
-      "Insurer": "Name of the insurance company for each policy listed.",
-      "PeriodOfInsurance": "Coverage period for each policy, formatted as 'Start Date - End Date'.",
-      "SumInsuredAndBonus": "Sum insured and any bonuses for each policy.",
-      "ClaimsDetails": "Details of claims filed under each policy."
+      "Name_Of_Insured_Person":"Name of the individual covered under the health insurance policy. This attribute identifies the insured person(s) for each policy, providing clarity on who is protected by the insurance.",
+      "Policy_Numbers": "A list of all policy numbers associated with current or previous coverages. Each policy number uniquely identifies an insurance policy, and this attribute should capture all such numbers for accurate record-keeping and verification.",
+      "Insurer": "Name of the insurance company for each policy listed. This attribute should capture the names of all insurance companies that have issued policies to the proposer or insured persons, providing a clear history of insurance providers.",
+      "Period_Of_Insurance": "Coverage period for each policy, formatted as 'Start Date - End Date'. This specifies the duration for which the insurance policy was or is active, giving a clear timeline of coverage periods for each policy held.",
+      "Sum_Insured_And_Bonus": "Sum insured and any bonuses for each policy. The sum insured is the maximum amount that the insurer agrees to pay in the event of a claim, while the bonus refers to any additional benefits or increments in the sum insured due to no-claim bonuses or other incentives.",
+      "Claims_Details": "Details of claims filed under each policy. This should include information on the number of claims, the nature of each claim, the amount claimed, and the outcome of the claim (e.g., approved, rejected, or pending)."
     }
   },
-  "MedicalAndLifestyleDetails": {
+  "Medical_And_Lifestyle_Details": {
     "Description": "Medical history and lifestyle details of the persons to be insured.",
     "Attributes": {
-      "MedicalHistory": "Documented medical conditions and past treatments.",
+      "Medical_History": "Documented medical conditions and past treatments.",
       "Lifestyle": "Details about smoking habits, alcohol consumption, and other substance uses."
     }
   },
-  "PaymentDetails": {
+  "Payment_Details": {
     "Description": "Details of the payment for the insurance proposal.",
     "Attributes": {
-      "PremiumPayerName": "Name of the person paying the premium.",
-      "RelationshipWithProposer": "Relationship of the premium payer to the proposer.",
-      "PremiumAmount": "The total amount of premium paid.",
-      "InstrumentType": "The type of payment instrument used.",
-      "SourceOfFunds": "Source of the funds used for the payment."
+      "Premium_Payer_Name": "Name of the person paying the premium.",
+      "Relationship_With_Proposer": "Relationship of the premium payer to the proposer.",
+      "Premium_Amount": "The total amount of premium paid.",
+      "Instrument_Type": "The type of payment instrument used.",
+      "Source_Of_Funds": "Source of the funds used for the payment."
     }
   },
-  "BankDetails": {
+  "Bank_Details": {
     "Description": "Bank details for refunds or claims.",
     "Attributes": {
-      "AccountHolderName": "Name of the account holder.",
-      "BankName": "Name of the bank.",
+      "Account_Holder_Name": "Name of the account holder.",
+      "Bank_Name": "Name of the bank.",
       "Branch": "Branch of the bank.",
-      "AccountNumber": "Bank account number.",
-      "IFSCCode": "IFSC code of the bank branch.",
-      "AccountType": "Type of bank account (Savings, Current, etc.)."
+      "Account_Number": "Bank account number.",
+      "IFSC_Code": "IFSC code of the bank branch.",
+      "Account_Type": "Type of bank account (Savings, Current, etc.)."
     }
   }
 }
