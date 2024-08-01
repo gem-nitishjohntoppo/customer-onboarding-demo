@@ -11,3 +11,4 @@ langchain_groq
 langchain
 nltk
 json-repair
+streamlit
