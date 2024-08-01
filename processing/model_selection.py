@@ -1,6 +1,6 @@
-from llama3_8b import llama3_8b
-from llama3_70b import llama3_70b
-from llama3_1_8b import llama3_1_8b
+from models.llama3_8b import llama3_8b
+from models.llama3_70b import llama3_70b
+
 
 def model_selection(prompt,model):
     with open('prompt.txt', 'w', encoding='utf-8') as file:  # Specify UTF-8 encoding here

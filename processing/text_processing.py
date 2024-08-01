@@ -1,11 +1,10 @@
-from groq_api_utils import groq_llm, extract_json_from_string
+from models.groq_api_utils import groq_llm, extract_json_from_string
 import json
-import time
-from bedrock_llm import bedrock_llm
+from models.bedrock_llm import bedrock_llm
 from nltk.tokenize import word_tokenize
-from model_selection import model_selection
-from llama3_1_8b import llama3_1_8b
-
+from processing.model_selection import model_selection
+from models.llama3_1_8b import llama3_1_8b
+import json_repair
 
 def process_large_context_in_chunks(contexts, schema, model_id):
     chunks = [split_into_chunks(entry['context']) for entry in contexts]
@@ -29,10 +28,27 @@ def split_into_chunks(context, chunk_size=5000):  # Adjusted to handle text as i
 def generate_prompt(chunk, schema):
     json_schema = json.dumps(schema, indent=4).replace('{', '{{').replace('}', '}}')
     # print(f'json schema{json_schema}')
-    return f"""Process this chunk: {chunk} with this {json_schema}. Output Json should contain all categories like this reference schema.
-    Make sure to check null and empty value of output json again on other chunks to find values. 
-    If the information provided does not fit into any of the existing categories
-    return null json values don't create new categories."""
+    return f'''Generate a valid JSON output based on the following: 
+    Input:
+    
+        
+    A JSON schema definition: `{json_schema}`    
+    
+    Text chunks containing relevant information: `{chunk}` 
+    Output:
+    
+    A single, well-formed JSON object adhering to the provided schema.    
+    
+    No additional notes or explanations. 
+    Rules:
+    
+    Structure: The output JSON must strictly match the schema's structure. No keys from the schema should be omitted.   
+    
+    Arrays: If the schema defines an array of JSON objects, each object within the array must have an identical structure.
+    
+    Missing/Empty Values: For fields not found in the text chunks or present as empty strings (""), assign the value `null`.   
+    
+    Contextual Filling: Use the information from the text chunks to populate the key-value pairs in the JSON output.'''
 
 
 def merge_results(results,schema,model_id):
@@ -42,14 +58,15 @@ def merge_results(results,schema,model_id):
     Note: Return the output in the corrected json format and only in one json schema"""
 
     answer = model_selection(prompt_add,model_id)
-    # print(f'combine answer{answer}')
+    print(f'combine answer{answer}')
     # with open('combine_answer.txt', 'w') as file:
     #     file.write(answer)
     
-    final_answer = json.loads(extract_json_from_string(answer))
-    # final_answer = extract_json_from_string(answer)
+    # final_answer = json.loads(extract_json_from_string(answer))
+    final_answer = extract_json_from_string(answer)
+    final_answer=json_repair.loads(final_answer)
     # with open('extract_json.txt', 'w') as file:
-    #     file.write(final_answer)
+    #    json.dump(final_answer,file)
     
     return {"combined_result": final_answer}
 
@@ -62,7 +79,8 @@ def process_large_context(context, schema, model_id):
     # result = groq_llm(prompt, model="llama-3.1-405b")
     print(f'Bedrock results: {result}')
     print(f'Bedrock results Type: {type(result)}')
-    parsed_result = json.loads(extract_json_from_string(result))
+    parsed_result = extract_json_from_string(result)
+    parsed_result=json_repair.loads(parsed_result)
     schema = parsed_result
     # results.append(parsed_result)
     return schema

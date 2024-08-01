@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from textractor import Textractor
 from textractor.data.constants import TextractFeatures
 from textractor.data.text_linearization_config import TextLinearizationConfig
-
+import json
 load_dotenv()
 
 SUPPORTED_EXTENSIONS = ("PDF", "JPG", "JPEG", "PNG", "TIF", "TIFF")
@@ -90,11 +90,52 @@ def analyze(document_path: str, features: Optional[List[TextractFeatures]] = Non
 
 # Function to extract text from a file using AWS Textract
 # @st.cache_data
+# def extract_text(file_path, document_bytes: Optional[bytes] = None, with_layout=True):
+#     max_retries = 3
+
+#     for retry_count in range(max_retries):
+#         # try:
+#         if with_layout:
+#             features_list = [TextractFeatures.TABLES, TextractFeatures.LAYOUT, TextractFeatures.FORMS, TextractFeatures.SIGNATURES]
+#             document = analyze(file_path, features=features_list, document_bytes=document_bytes)
+#         else:
+#             document = detect(file_path, document_bytes=document_bytes)
+        
+#         config = TextLinearizationConfig(
+#             hide_figure_layout=True,
+#             title_prefix="# ",
+#             remove_new_lines_in_leaf_elements= True,
+#             section_header_prefix="## ",
+#             table_linearization_format='markdown'#'markdown',
+#         )
+
+        
+#         page_results = []
+        
+#         # for i, page in enumerate(document.pages):
+#         # Limit extraction to the first 5 pages or the total number of pages if less than 5
+#         num_pages_to_process = min(7, len(document.pages))
+#         for i in range(num_pages_to_process):
+#             page = document.pages[i]
+#             page_text = page.get_text(config=config)
+#             page_results.append({
+#                 "page": i + 1,
+#                 "context": page_text
+#             })
+        
+#         return page_results
 def extract_text(file_path, document_bytes: Optional[bytes] = None, with_layout=True):
     max_retries = 3
 
+    # Determine the path for the JSON file
+    json_path = os.path.splitext(file_path)[0] + '.json'
+    
+    # Check if the JSON file already exists
+    if os.path.exists(json_path):
+        with open(json_path, 'r') as json_file:
+            return json.load(json_file)
+
     for retry_count in range(max_retries):
-        # try:
         if with_layout:
             features_list = [TextractFeatures.TABLES, TextractFeatures.LAYOUT, TextractFeatures.FORMS, TextractFeatures.SIGNATURES]
             document = analyze(file_path, features=features_list, document_bytes=document_bytes)
@@ -106,14 +147,10 @@ def extract_text(file_path, document_bytes: Optional[bytes] = None, with_layout=
             title_prefix="# ",
             remove_new_lines_in_leaf_elements= True,
             section_header_prefix="## ",
-            table_linearization_format='markdown'#'markdown',
+            table_linearization_format='markdown'
         )
 
-        
         page_results = []
-        
-        # for i, page in enumerate(document.pages):
-        # Limit extraction to the first 5 pages or the total number of pages if less than 5
         num_pages_to_process = min(7, len(document.pages))
         for i in range(num_pages_to_process):
             page = document.pages[i]
@@ -122,6 +159,10 @@ def extract_text(file_path, document_bytes: Optional[bytes] = None, with_layout=
                 "page": i + 1,
                 "context": page_text
             })
+
+        # Save the extracted data to a JSON file
+        with open(json_path, 'w') as json_file:
+            json.dump(page_results, json_file)
         
         return page_results
     
