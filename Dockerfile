@@ -1,19 +1,16 @@
-FROM public.ecr.aws/docker/library/node:latest as build
+FROM public.ecr.aws/docker/library/python:3.10-slim-bullseye
 
 WORKDIR /app
 
-COPY package*.json ./
+# COPY pip.conf /etc/
 
-RUN npm install
+COPY requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt
+
 
 COPY . .
 
-RUN npm run build
+EXPOSE 8080
 
-FROM public.ecr.aws/nginx/nginx:latest as prod
-
-COPY --from=build /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
