@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     AWS_REGION: "ap-south-1"
-    ECR_REPOSITORY_NAME: "fabfe"
+    ECR_REPOSITORY_NAME: "aig-repo-server"
     ACCOUNT_ID: "851725235990"    
 
 phases:
