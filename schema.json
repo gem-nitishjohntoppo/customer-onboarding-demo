@@ -13,7 +13,7 @@
       "Monthly_Income": "The average monthly income of the proposer.",
       "Address": {
         "Landmark": "A notable location near the proposer’s residence to aid in locating it.",
-        "Area": "The specific area or neighborhood of the proposer's residence.",
+        "Area": "The specific area, neighborhood, or housing details such as house number and plot number of the proposer's residence.(Example Plot no1 , Hno 2)",
         "City": "The city in which the proposer resides.",
         "District": "The district or administrative division of the city where the proposer lives.",
         "Pin_Code": "The postal code of the proposer's residence.",
@@ -56,7 +56,8 @@
       "Policy_Numbers": "A list of all policy numbers associated with current or previous coverages. Each policy number uniquely identifies an insurance policy, and this attribute should capture all such numbers for accurate record-keeping and verification.",
       "Insurer": "Name of the insurance company for each policy listed. This attribute should capture the names of all insurance companies that have issued policies to the proposer or insured persons, providing a clear history of insurance providers.",
       "Period_Of_Insurance": "Coverage period for each policy, formatted as 'Start Date - End Date'. This specifies the duration for which the insurance policy was or is active, giving a clear timeline of coverage periods for each policy held.",
-      "Sum_Insured_And_Bonus": "Sum insured and any bonuses for each policy. The sum insured is the maximum amount that the insurer agrees to pay in the event of a claim, while the bonus refers to any additional benefits or increments in the sum insured due to no-claim bonuses or other incentives.",
+      "Sum_Insured": "The maximum amount that the insurer agrees to pay in the event of a claim. This attribute should capture the sum insured for each policy, providing clarity on the coverage limit.",
+      "Bonus": "Any additional benefits or increments in the sum insured due to no-claim bonuses or other incentives. This attribute should capture the bonus amounts for each policy, reflecting any rewards for not making claims.",
       "Claims_Details": "Details of claims filed under each policy. This should include information on the number of claims, the nature of each claim, the amount claimed, and the outcome of the claim (e.g., approved, rejected, or pending)."
     }
   },

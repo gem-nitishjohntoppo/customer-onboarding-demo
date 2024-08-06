@@ -5,7 +5,7 @@ from processing.text_processing import process_large_context_in_chunks,process_l
 import json
 # from text_processing_2 import process_large_context2
 # Initialize the Streamlit app
-st.title('PortMyHealth_Insurance')
+st.title('Health Insurance Port')
 
 # File uploader allows the user to upload PDF
 uploaded_file = st.file_uploader("Choose a PDF file", type='pdf')
